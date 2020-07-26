@@ -6082,9 +6082,9 @@ send(msg.chat_id_, msg.id_,Text)
 end
 
 
-if text == ("ايدي") and msg.reply_to_message_id_ == 0 and not database:get(bot_id..'Bot:Id'..msg.chat_id_) then      
-if not database:sismember(bot_id..'Spam:Texting'..msg.sender_user_id_,text) then
-database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
+if text == ("ايدي") and msg.reply_to_message_id_ == 0 and not redis:get(ToReDo..'Bot:Id'..msg.chat_id_) then      
+if not redis:sismember(ToReDo..'Spam:Texting'..msg.sender_user_id_,text) then
+redis:sadd(ToReDo..'Spam:Texting'..msg.sender_user_id_,text) 
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da)  tdcli_function ({ ID = "SendChatAction",  chat_id_ = msg.sender_user_id_, action_ = {  ID = "SendMessageTypingAction", progress_ = 100}  },function(arg,ta)  tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)  tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = msg.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
 if da.status_.ID == "ChatMemberStatusCreator" then 
 rtpa = 'المالك'
@@ -6093,11 +6093,11 @@ rtpa = 'مشرف'
 elseif da.status_.ID == "ChatMemberStatusMember" then 
 rtpa = 'عضو'
 end
-local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) or 1) 
+local Msguser = tonumber(redis:get(ToReDo..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) or 1) 
 local nummsggp = tonumber(msg.id_/2097152/0.5)
 local nspatfa = tonumber(Msguser / nummsggp * 100)
-local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
-local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_) or 0)
+local Contact = tonumber(redis:get(ToReDo..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
+local NUMPGAME = tonumber(redis:get(ToReDo..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_) or 0)
 local rtp = Rutba(msg.sender_user_id_,msg.chat_id_)
 if result.username_ then
 username = '@'..result.username_ 
@@ -6105,7 +6105,7 @@ else
 username = 'لا يوجد '
 end
 local iduser = msg.sender_user_id_
-local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..msg.sender_user_id_) or 0)
+local edit = tonumber(redis:get(ToReDo..'edits'..msg.chat_id_..msg.sender_user_id_) or 0)
 local photps = (taha.total_count_ or 0)
 local interaction = Total_Msg(Msguser)
 local rtpg = rtpa
@@ -6118,8 +6118,8 @@ local tahaa = {
 "اتخبل برب 😉💘",
 }
 local rdphoto = tahaa[math.random(#tahaa)]
-if not database:get(bot_id..'Bot:Id:Photo'..msg.chat_id_) then      
-local get_id_text = database:get(bot_id.."KLISH:ID"..msg.chat_id_)
+if not redis:get(ToReDo..'Bot:Id:Photo'..msg.chat_id_) then      
+local get_id_text = redis:get(ToReDo.."KLISH:ID"..msg.chat_id_)
 if get_id_text then
 if result.username_ then
 username = '@'..result.username_ 
@@ -6161,7 +6161,7 @@ end
 end
 end
 else
-local get_id_text = database:get(bot_id.."KLISH:ID"..msg.chat_id_)
+local get_id_text = redis:get(ToReDo.."KLISH:ID"..msg.chat_id_)
 if get_id_text then
 get_id_text = get_id_text:gsub('#rdphoto',rdphoto) 
 get_id_text = get_id_text:gsub('#id',iduser) 
