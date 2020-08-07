@@ -2,6 +2,276 @@ function Orders(msg)
 local text = msg.content_.text_
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
 ------------------------------------------hso----------------------------------
+if text == ("مسح قائمه العام") and Sudo_ToReDo(msg) then
+redis:del(ToReDo..'GBan:User')
+send(msg.chat_id_, msg.id_, '\n܁༯┆تم مسـح قائمةه العام 💞 ܰ')
+return false
+end
+
+if text == ("قائمه العام") and Sudo_ToReDo(msg) then
+local list = redis:smembers(ToReDo..'GBan:User')
+t = "\n܁༯┆قائمة العام 💞💞 .\n܀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤܀\n"
+for k,v in pairs(list) do
+local username = redis:get(ToReDo.."user:Name" .. v)
+if username then
+t = t.."𖠵 "..k.." ◜*@"..username.."*◞  💞🦄 .\n"
+else
+end
+end
+if #list == 0 then
+t = "٭ 𖤹┆لا يوجد احد محظور عام ☓◟"
+end
+send(msg.chat_id_, msg.id_, t)
+return false
+end
+if text == ("حظر عام") and msg.reply_to_message_id_ and Sudo_ToReDo(msg) then
+if AddChannel(msg.sender_user_id_) == false then
+send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
+return false
+end
+function start_function(extra, result, success)
+if result.sender_user_id_ == tonumber(SUDO) then
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك حظر المطور الاساسي 💞 ܰ\n")
+return false 
+end
+if tonumber(result.sender_user_id_) == tonumber(ToReDo) then  
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك حظر البوت  💞 ܰ\n")
+return false 
+end
+redis:sadd(ToReDo..'GBan:User', result.sender_user_id_)
+chat_kick(result.chat_id_, result.sender_user_id_)
+tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},
+function(arg,data) 
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم حظر العضو عام  💞 ܰ'
+send(msg.chat_id_, msg.id_, usertext..status)
+end,nil)
+end
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
+return false
+end
+if text and text:match("^حظر عام @(.*)$")  and Sudo_ToReDo(msg) then
+local username = text:match("^حظر عام @(.*)$") 
+if AddChannel(msg.sender_user_id_) == false then
+send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
+return false
+end
+function start_function(extra, result, success)
+if result.id_ then
+if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
+send(msg.chat_id_,msg.id_,"܁༯┆عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه  💞 ܰ")   
+return false 
+end      
+if tonumber(result.id_) == tonumber(ToReDo) then  
+send(msg.chat_id_, msg.id_, "܁༯┆لا تستطيع حظر البوت 💞 ܰ")
+return false 
+end
+if result.id_ == tonumber(SUDO) then
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك حظر المطور الاساسي 💞 ܰ\n")
+return false 
+end
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم حظر العضو عام  💞 ܰ'
+texts = usertext..status
+redis:sadd(ToReDo..'GBan:User', result.id_)
+else
+texts = '܁༯┆لايوجد حساب بهذا المعرف  💞 ܰ\n'
+end
+send(msg.chat_id_, msg.id_, texts)
+end
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
+return false
+end
+if text and text:match("^حظر عام (%d+)$") and Sudo_ToReDo(msg) then
+local userid = text:match("^حظر عام (%d+)$")
+if AddChannel(msg.sender_user_id_) == false then
+send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
+return false
+end
+if userid == tonumber(SUDO) then
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك حظر المطور الاساسي 💞 ܰ\n")
+return false 
+end
+if tonumber(userid) == tonumber(ToReDo) then  
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك حظر البوت  💞 ܰ")
+return false 
+end
+redis:sadd(ToReDo..'GBan:User', userid)
+tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
+if data.first_name_ then
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم حظر العضو عام  💞 ܰ'
+send(msg.chat_id_, msg.id_, usertext..status)
+else
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم حظر العضو عام  💞 ܰ'
+send(msg.chat_id_, msg.id_, usertext..status)
+end;end,nil)
+return false
+end
+if text == ("كتم عام") and msg.reply_to_message_id_ and Sudo_ToReDo(msg) then
+if AddChannel(msg.sender_user_id_) == false then
+send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
+return false
+end
+function start_function(extra, result, success)
+if result.sender_user_id_ == tonumber(SUDO) then
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك كتم المطور الاساسي 💞 ܰ\n")
+return false 
+end
+if tonumber(result.sender_user_id_) == tonumber(ToReDo) then  
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك كتم البوت عام  💞 ܰ")
+return false 
+end
+redis:sadd(ToReDo..'Gmute:User', result.sender_user_id_)
+tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},
+function(arg,data) 
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم كتم العضو عام من المجموعات  💞 ܰ'
+send(msg.chat_id_, msg.id_, usertext..status)
+end,nil)
+end
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
+return false
+end
+if text and text:match("^كتم عام @(.*)$")  and Sudo_ToReDo(msg) then
+local username = text:match("^كتم عام @(.*)$") 
+if AddChannel(msg.sender_user_id_) == false then
+send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
+return false
+end
+function start_function(extra, result, success)
+if result.id_ then
+if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
+send(msg.chat_id_,msg.id_,"܁༯┆عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه  💞 ܰ")   
+return false 
+end      
+if tonumber(result.id_) == tonumber(ToReDo) then  
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك كتم البوت  💞 ܰ")
+return false 
+end
+if result.id_ == tonumber(SUDO) then
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك كتم المطور الاساسي  💞 ܰ\n")
+return false 
+end
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم كتم العضو عام من المجموعات  💞 ܰ'
+texts = usertext..status
+redis:sadd(ToReDo..'Gmute:User', result.id_)
+else
+texts = '܁༯┆لايوجد حساب بهذا المعرف  💞 ܰ\n'
+end
+send(msg.chat_id_, msg.id_, texts)
+end
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
+return false
+end
+if text and text:match("^كتم عام (%d+)$") and Sudo_ToReDo(msg) then
+local userid = text:match("^كتم عام (%d+)$")
+if AddChannel(msg.sender_user_id_) == false then
+send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
+return false
+end
+if userid == tonumber(SUDO) then
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك كتم المطور الاساسي 💞 ܰ\n")
+return false 
+end
+if tonumber(userid) == tonumber(ToReDo) then  
+send(msg.chat_id_, msg.id_, "܁༯┆لايمكنك كتم البوت  💞 ܰ")
+return false 
+end
+redis:sadd(ToReDo..'Gmute:User', userid)
+
+tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
+if data.first_name_ then
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم كتم العضو عام من المجموعات  💞 ܰ'
+send(msg.chat_id_, msg.id_, usertext..status)
+else
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم كتم العضو عام من المجموعات  💞 ܰ'
+send(msg.chat_id_, msg.id_, usertext..status)
+end;end,nil)
+return false
+end
+if text == ("الغاء العام") and msg.reply_to_message_id_ and Sudo_ToReDo(msg) then
+if AddChannel(msg.sender_user_id_) == false then
+send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
+return false
+end
+function start_function(extra, result, success)
+tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم الغاء ܊ الحظر ٭ الكتم ܊ عام من المجموعات 💞 ܰ'
+send(msg.chat_id_, msg.id_, usertext..status)
+end,nil)
+redis:srem(ToReDo..'GBan:User', result.sender_user_id_)
+redis:srem(ToReDo..'Gmute:User', result.sender_user_id_)
+end
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
+return false
+end
+if text and text:match("^الغاء العام @(.*)$") and Sudo_ToReDo(msg) then
+local username = text:match("^الغاء العام @(.*)$") 
+if AddChannel(msg.sender_user_id_) == false then
+send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
+return false
+end
+function start_function(extra, result, success)
+if result.id_ then
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم الغاء ܊ الحظر ٭ الكتم ܊ عام من المجموعات 💞 ܰ'
+texts = usertext..status
+redis:srem(ToReDo..'GBan:User', result.id_)
+redis:srem(ToReDo..'Gmute:User', result.id_)
+else
+texts = '܁༯┆لايوجد حساب بهذا المعرف  💞 ܰ'
+end
+send(msg.chat_id_, msg.id_, texts)
+end
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
+return false
+end
+if text and text:match("^الغاء العام (%d+)$") and Sudo_ToReDo(msg) then
+local userid = text:match("^الغاء العام (%d+)$")
+if AddChannel(msg.sender_user_id_) == false then
+send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
+return false
+end
+redis:srem(ToReDo..'GBan:User', userid)
+redis:srem(ToReDo..'Gmute:User', userid)
+tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
+if data.first_name_ then
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم الغاء ܊ الحظر ٭ الكتم ܊ عام من المجموعات 💞 ܰ'
+send(msg.chat_id_, msg.id_, usertext..status)
+else
+usertext = '\n܁༯┆هلو عمري 💞 ܰ'
+status  = '\n܁༯┆تم الغاء ܊ الحظر ٭ الكتم ܊ عام من المجموعات 💞 ܰ'
+send(msg.chat_id_, msg.id_, usertext..status)
+end;end,nil)
+return false
+end
+------------------------------------------------------------------------
+if text == ("مسح المطورين") and Sudo_ToReDo(msg) then
+redis:del(ToReDo..'Sudo:User')
+send(msg.chat_id_, msg.id_, "\n܁༯┆تم مسح المطورين 💞 ܰ ")
+end
+if text == ("المطورين") and Sudo_ToReDo(msg) then
+local list = redis:smembers(ToReDo..'Sudo:User')
+t = "\n܁༯┆قائمة المطورين 💞💞 .\n܀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤܀\n"
+for k,v in pairs(list) do
+local username = redis:get(ToReDo.."user:Name" .. v)
+if username then
+t = t.."𖠵 "..k.." ◜*@"..username.."*◞  💞🦄 .\n"
+else
+end
+end
+if #list == 0 then
+t = "٭ 𖤹┆لا يوجد مطوريين ☓◟"
+end
+send(msg.chat_id_, msg.id_, t)
+end
 if text == ("رفع مطور") and msg.reply_to_message_id_ and Sudo_ToReDo(msg) then
 function start_function(extra, result, success)
 if AddChannel(msg.sender_user_id_) == false then
@@ -572,21 +842,6 @@ end
 if text == 'مسح الادمنيه' and Owners(msg) then
 redis:del(ToReDo..'Mod:User'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '܁༯┆ تم مسح قائمة الادمنية 💞 ܰ')
-end
-if text == ("الادمنيه") then
-local list = redis:smembers(ToReDo..'Mod:User'..msg.chat_id_)
-t = "\n٭ 𖤓┆قائمة الادمنيه 💞💞◟\n܀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤܀\n"
-for k,v in pairs(list) do
-local username = redis:get(ToReDo.."user:Name" .. v)
-if username then
-t = t.."𖠵 "..k.." ◜[@"..username.."]◞ .\n"
-else
-end
-end
-if #list == 0 then
-t = "܁༯┆لايوجد ادمنيه 💞 ܰ"
-end
-send(msg.chat_id_, msg.id_, t)
 end
 if text == ("الادمنيه") then
 local list = redis:smembers(ToReDo..'Mod:User'..msg.chat_id_)
@@ -1500,6 +1755,34 @@ local Teext = text:match("^تغير رد العضو (.*)$")
 redis:set(ToReDo.."Memp:Rd"..msg.chat_id_,Teext)
 send(msg.chat_id_, msg.id_,"܁༯┆تم تغير رد العضو الى ◃ "..Teext)
 end
+if text == 'مسح رد العضو' and Mod(msg) then
+redis:del(ToReDo..'Memp:Rd'..msg.chat_id_)
+send(msg.chat_id_, msg.id_, '܁༯┆تم مسح رد العضو 💞 ܰ ')
+end
+if text == 'مسح رد المميز' and Mod(msg) then
+redis:del(ToReDo..'Vips:Rd'..msg.chat_id_)
+send(msg.chat_id_, msg.id_, '܁༯┆تم مسح رد المميز 💞 ܰ ')
+end
+if text == 'مسح رد الادمن' and Mod(msg) then
+redis:del(ToReDo..'Mod:Rd'..msg.chat_id_)
+send(msg.chat_id_, msg.id_, '܁༯┆تم مسح رد الادمن 💞 ܰ ')
+end
+if text == 'مسح رد المدير' and Mod(msg) then
+redis:del(ToReDo..'Owners:Rd'..msg.chat_id_)
+send(msg.chat_id_, msg.id_, '܁༯┆تم مسح رد المدير💞 ܰ ')
+end
+if text == 'مسح رد المنشئ' and Mod(msg) then
+redis:del(ToReDo..'Constructor:Rd'..msg.chat_id_)
+send(msg.chat_id_, msg.id_, '܁༯┆تم مسح رد المنشئ 💞 ܰ ')
+end
+if text == 'مسح رد المنشئ الاساسي' and Mod(msg) then
+redis:del(ToReDo..'BasicConstructor:Rd'..msg.chat_id_)
+send(msg.chat_id_, msg.id_, '܁༯┆تم مسح رد المنشئ الاساسي 💞 ܰ ')
+end
+if text == 'مسح رد المطور' and Mod(msg) then
+redis:del(ToReDo..'Sudo:Rd'..msg.chat_id_)
+send(msg.chat_id_, msg.id_, '܁༯┆تم مسح رد المطور 💞 ܰ ')
+end
 
 if text and text:match("^(.*)$") then
 if redis:get(ToReDo..'help'..msg.sender_user_id_) == 'true' then
@@ -1568,7 +1851,7 @@ end
 end
 if text and text:match("^(.*)$") then
 if redis:get(ToReDo..'help8'..msg.sender_user_id_) == 'true' then
-send(msg.chat_id_, msg.id_, '📮┆ تم حفظ الكليشه بنجاح')
+send(msg.chat_id_, msg.id_, '??┆ تم حفظ الكليشه بنجاح')
 redis:del(ToReDo..'help8'..msg.sender_user_id_)
 redis:set(ToReDo..'help8_text',text)
 return false
@@ -1896,22 +2179,22 @@ if redis:get(ToReDo.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_) 
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 20 then
-send(msg.chat_id_, msg.id_,"📬┋ عذرآ لا يمكنك تخمين عدد اكبر من ال { 20 } خمن رقم ما بين ال{ 1 و 20 }\n")
+send(msg.chat_id_, msg.id_,"܁༯┆ عذرآ لا يمكنك تخمين عدد اكبر من ال { 20 } خمن رقم ما بين ال{ 1 و 20 }💞 ܰ\n")
 return false  end 
 local GETNUM = redis:get(ToReDo.."GAMES:NUM"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
 redis:del(ToReDo..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_)
 redis:del(ToReDo.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
 redis:incrby(ToReDo..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_,5)  
-send(msg.chat_id_, msg.id_,'🔖┋ مبروك فزت ويانه وخمنت الرقم الصحيح\n🚸┋ تم اضافة { 5 } من النقاط \n')
+send(msg.chat_id_, msg.id_,'܁༯┆ مبروك فزت ويانه وخمنت الرقم الصحيح 💞 ܰ\n܁༯┆ تم اضافة { 5 } من النقاط 💞 ܰ\n')
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
 redis:incrby(ToReDo..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_,1)
 if tonumber(redis:get(ToReDo..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
 redis:del(ToReDo..'SADD:NUM'..msg.chat_id_..msg.sender_user_id_)
 redis:del(ToReDo.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
-send(msg.chat_id_, msg.id_,'📮┋ اوبس لقد خسرت في اللعبه \n📬┋ حظآ اوفر في المره القادمه \n🔰┋ كان الرقم الذي تم تخمينه { '..GETNUM..' }')
+send(msg.chat_id_, msg.id_,'܁༯┆اوبس لقد خسرت في اللعبه 💞 ܰ\n܁༯┆حظآ اوفر في المره القادمه 💞 ܰ\n܁༯┆كان الرقم الذي تم تخمينه { '..GETNUM..' }💞 ܰ')
 else
-send(msg.chat_id_, msg.id_,'📛┋ اوبس تخمينك خطأ \n📌┋ ارسل رقم تخمنه مره اخرى ')
+send(msg.chat_id_, msg.id_,'܁༯┆اوبس تخمينك خطأ 💞 ܰ\n܁༯┆ ارسل رقم تخمنه مره اخرى 💞 ܰ')
 end
 end
 end
@@ -1934,7 +2217,7 @@ if redis:get(ToReDo.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_) th
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 6 then
-send(msg.chat_id_, msg.id_,"📬┋ عذرا لا يوجد سواء { 6 } اختيارات فقط ارسل اختيارك مره اخرى\n")
+send(msg.chat_id_, msg.id_,"܁༯┆عذرا لا يوجد سواء { 6 } اختيارات فقط ارسل اختيارك مره اخرى 💞 ܰ\n")
 return false  end 
 local GETNUM = redis:get(ToReDo.."Games:Bat"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
